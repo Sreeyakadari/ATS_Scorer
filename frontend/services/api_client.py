@@ -2,13 +2,15 @@ from typing import Any, Dict, List
 import requests
 import streamlit as st
 
-DEFAULT_BACKEND_URL = "http://localhost:8000"
+# DEFAULT_BACKEND_URL = "http://localhost:8000"
 
+# def _backend_url() -> str:
+#     try:
+#         return st.secrets["backend"]["url"]
+#     except (KeyError, FileNotFoundError):
+#         return DEFAULT_BACKEND_URL
 def _backend_url() -> str:
-    try:
-        return st.secrets["backend"]["url"]
-    except (KeyError, FileNotFoundError):
-        return DEFAULT_BACKEND_URL
+    return st.secrets["BACKEND_URL"]
 
 def _auth_headers(access_token: str) -> Dict[str, str]:
     return {"Authorization": f"Bearer {access_token}"}
